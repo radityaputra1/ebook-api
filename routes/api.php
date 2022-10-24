@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('me', [Authcontroller::class, 'me']);
 
 Route::resource('books', BookController::class)->except(
+    ['create', 'edit']
+);
+Route::resource('authors', Authorcontroller::class)->except(
     ['create', 'edit']
 );
